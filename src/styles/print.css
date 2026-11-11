@@ -1,0 +1,15 @@
+@page { size: A4; margin: 14mm; }
+@media print {
+  body { background: #fff; }
+  .no-print, .topbar, .statusbar, .fill-toolbar, .toast { display: none !important; }
+  .desk { padding: 0; }
+  .paper { box-shadow: none; padding: 0; max-width: none; min-height: 0; outline: 0; }
+  .fill-field { break-inside: avoid; }
+  .section-title { break-after: avoid; }
+  input:not([type=checkbox]):not([type=radio]), select, textarea {
+    border: 0 !important; border-bottom: 1px solid var(--ink-3) !important; border-radius: 0; padding: 2px; min-height: 0; box-shadow: none !important;
+    -webkit-appearance: none; appearance: none; }
+  textarea { resize: none; }
+  .sig canvas { border: 0; border-bottom: 1px solid var(--ink-3); border-radius: 0; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

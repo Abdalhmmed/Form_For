@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- خلفية البرقوقي الداكن المميز -->
+  <rect width="64" height="64" rx="14" fill="#2A1B33" />
+  
+  <!-- إطار داخلي ناعم -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="none" stroke="#4B2E5C" stroke-width="1" />
+  
+  <!-- تمثيل مصغر لورقة النموذج -->
+  <rect x="10" y="8" width="44" height="48" rx="4" fill="#FFFFFF" />
+  <rect x="10" y="8" width="44" height="10" rx="4" fill="#EFE8F2" />
+  
+  <!-- الحرف F الأول -->
+  <path d="M 17 22 L 31 22 L 31 26 L 22 26 L 22 31 L 29 31 L 29 35 L 22 35 L 22 47 L 17 47 Z" fill="#2A1B33" />
+  
+  <!-- الحرف F الثاني -->
+  <path d="M 32 22 L 46 22 L 46 26 L 37 26 L 37 31 L 44 31 L 44 35 L 37 35 L 37 47 L 32 47 Z" fill="#4B2E5C" />
+  
+  <!-- نقطة باللون البرقوقي -->
+  <circle cx="49" cy="45" r="2" fill="#5E3A72" />
+</svg>

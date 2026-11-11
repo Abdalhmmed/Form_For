@@ -1,0 +1,31 @@
+:root {
+  --plum-900: #2a1b33;
+  --plum-800: #3a2645;
+  --plum-700: #4b2e5c;
+  --plum-600: #5e3a72;
+  --plum-100: #efe8f2;
+  --plum-50: #f7f3f8;
+
+  --ink: #1f1a22;
+  --ink-2: #5f5763;
+  --ink-3: #8a828e;
+  --line: #ddd6df;
+  --line-strong: #c4bbc7;
+  --desk: #ece9ea;
+  --panel: #faf9f9;
+  --paper: #ffffff;
+  --danger: #a32b2b;
+  --danger-bg: #fbeeee;
+  --ok: #2f6b45;
+
+  --r-sm: 2px;
+  --r: 4px;
+  --shadow-paper: 0 1px 3px rgba(42, 27, 51, 0.12);
+
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px;
+  --fs-xs: 12px; --fs-sm: 14px; --fs-md: 16px; --fs-lg: 20px; --fs-xl: 28px;
+
+  --font: 'IBM Plex Sans Arabic', 'IBM Plex Sans', system-ui, sans-serif;
+  --t: 120ms ease;
+  --topbar-h: 52px;
+}
