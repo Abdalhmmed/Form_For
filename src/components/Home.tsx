@@ -45,7 +45,7 @@ export default function Home() {
     <div className="app">
       <header className="topbar home-topbar">
         <div className="brand">
-          <img src="/logo.svg" alt="FF" className="brand-logo" />
+          <img src="./logo.svg" alt="FF" className="brand-logo" />
           <span className="brand-title-text">{t.brand}</span>
         </div>
 
@@ -66,7 +66,7 @@ export default function Home() {
       <main className="home">
         <section className="home-intro">
           <div className="home-hero-badge">
-            <img src="/logo.svg" alt="FF Logo" className="hero-logo" />
+            <img src="./logo.svg" alt="FF Logo" className="hero-logo" />
           </div>
           <h1>{t.home.heroTitle}</h1>
           <p className="lead">{t.home.heroLead}</p>

@@ -76,7 +76,7 @@ export default function TopBar() {
       <div className="topbar-row-main">
         <div className="topbar-left-zone">
           <button className="brand-btn" onClick={handleHomeClick} title={t.brand}>
-            <img src="/logo.svg" alt="FF" className="brand-logo" />
+            <img src="./logo.svg" alt="FF" className="brand-logo" />
             <span className="brand-text">{t.brand}</span>
           </button>
           <span className="sep hide-mobile" />

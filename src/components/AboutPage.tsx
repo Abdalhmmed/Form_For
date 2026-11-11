@@ -16,7 +16,7 @@ export default function AboutPage() {
     <div className="app">
       <header className="topbar about-topbar no-print">
         <button className="brand-btn" onClick={() => setView('home')}>
-          <img src="/logo.svg" alt="FF" className="brand-logo" />
+          <img src="./logo.svg" alt="FF" className="brand-logo" />
           <span className="brand-title-text">{t.brand}</span>
         </button>
 
@@ -38,7 +38,7 @@ export default function AboutPage() {
         {/* المقدمة والهدف */}
         <div className="about-hero">
           <div className="hero-logo-badge">
-            <img src="/logo.svg" alt="FF Logo" className="hero-logo-large" />
+            <img src="./logo.svg" alt="FF Logo" className="hero-logo-large" />
           </div>
           <h1>{t.aboutPage.title}</h1>
           <p className="about-lead">{t.aboutPage.lead}</p>
