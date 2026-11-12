@@ -83,6 +83,7 @@ export interface TranslationDictionary {
   fieldTypes: {
     text: string;
     textarea: string;
+    template: string;
     number: string;
     email: string;
     phone: string;
@@ -111,6 +112,11 @@ export interface TranslationDictionary {
     required: string;
     optionsLegend: string;
     addOption: string;
+    templatesLegend: string;
+    addTemplate: string;
+    templateName: string;
+    templateText: string;
+    templatePlaceholderHint: string;
     validationLegend: string;
     minLength: string;
     maxLength: string;
@@ -127,6 +133,7 @@ export interface TranslationDictionary {
     savePdf: string;
     clearSignature: string;
     selectPlaceholder: string;
+    chooseTemplate: string;
     oneError: string;
     multipleErrors: string;
     fieldNeedsCorrection: string;

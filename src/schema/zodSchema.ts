@@ -3,6 +3,12 @@ import { FIELD_TYPES } from './types';
 
 const optionSchema = z.object({ value: z.string().max(200), label: z.string().max(500) });
 
+const templateVariantSchema = z.object({
+  id: z.string().max(100),
+  label: z.string().max(200),
+  text: z.string().max(5000),
+});
+
 export const fieldSchema = z.object({
   id: z.string().min(1).max(64),
   type: z.enum(FIELD_TYPES),
@@ -11,6 +17,8 @@ export const fieldSchema = z.object({
   placeholder: z.string().max(500).optional(),
   width: z.enum(['full', 'half']).optional(),
   options: z.array(optionSchema).max(200).optional(),
+  templates: z.array(templateVariantSchema).max(50).optional(),
+  defaultTemplateId: z.string().max(100).optional(),
   validation: z.object({
     minLength: z.number().optional(), maxLength: z.number().optional(),
     min: z.number().optional(), max: z.number().optional(),

@@ -67,7 +67,7 @@ export default function PropertiesPanel({ onClose }: { onClose?: () => void }) {
             ? <textarea rows={4} value={f.label} onChange={(e) => up({ label: e.target.value })} />
             : <input value={f.label} onChange={(e) => up({ label: e.target.value })} />}
         </label>
-        {isInput && f.type !== 'signature' && !hasOptions && f.type !== 'date' && (
+        {isInput && f.type !== 'signature' && !hasOptions && f.type !== 'date' && f.type !== 'template' && (
           <label className="prop">{t.properties.placeholder}
             <input value={f.placeholder || ''} onChange={(e) => up({ placeholder: e.target.value })} />
           </label>
@@ -93,6 +93,64 @@ export default function PropertiesPanel({ onClose }: { onClose?: () => void }) {
             const n = (f.options?.length || 0) + 1;
             up({ options: [...(f.options || []), { value: 'opt' + Date.now().toString(36), label: `Option ${n}` }] });
           }}><Plus {...ic} /> {t.properties.addOption}</button>
+        </fieldset>
+      )}
+
+      {f.type === 'template' && (
+        <fieldset className="group">
+          <legend>{t.properties.templatesLegend}</legend>
+          <p className="hint" style={{ marginBottom: '8px' }}>{t.properties.templatePlaceholderHint}</p>
+          {(f.templates || []).map((tpl, i) => (
+            <div key={tpl.id || i} style={{ border: '1px solid var(--line)', borderRadius: 'var(--r-sm)', padding: '10px', marginBottom: '10px', background: 'var(--paper)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+                <span style={{ fontSize: '11px', fontWeight: 600, color: 'var(--plum-800)' }}>
+                  {t.properties.templateName} #{i + 1}
+                </span>
+                {(f.templates || []).length > 1 && (
+                  <button className="icon-btn" aria-label="Delete template" onClick={() => {
+                    const newTemplates = (f.templates || []).filter((_, j) => j !== i);
+                    const newDefault = f.defaultTemplateId === tpl.id ? (newTemplates[0]?.id || '') : f.defaultTemplateId;
+                    up({ templates: newTemplates, defaultTemplateId: newDefault });
+                  }}>
+                    <X {...ic} />
+                  </button>
+                )}
+              </div>
+              <label className="prop" style={{ marginBottom: '6px' }}>
+                <input
+                  placeholder={t.properties.templateName}
+                  value={tpl.label}
+                  onChange={(e) => {
+                    const templates = [...(f.templates || [])];
+                    templates[i] = { ...tpl, label: e.target.value };
+                    up({ templates });
+                  }}
+                />
+              </label>
+              <label className="prop">
+                <textarea
+                  rows={3}
+                  placeholder={t.properties.templateText}
+                  value={tpl.text}
+                  onChange={(e) => {
+                    const templates = [...(f.templates || [])];
+                    templates[i] = { ...tpl, text: e.target.value };
+                    up({ templates });
+                  }}
+                />
+              </label>
+            </div>
+          ))}
+          <button className="btn link" onClick={() => {
+            const count = (f.templates?.length || 0) + 1;
+            const newTpl = {
+              id: 'tpl_' + Date.now().toString(36),
+              label: `قالب ${count}`,
+              text: 'رسالة {{اسم}} إلى {{جهة}}',
+            };
+            const templates = [...(f.templates || []), newTpl];
+            up({ templates, defaultTemplateId: f.defaultTemplateId || newTpl.id });
+          }}><Plus {...ic} /> {t.properties.addTemplate}</button>
         </fieldset>
       )}
 

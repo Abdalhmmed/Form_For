@@ -1,10 +1,16 @@
 export const FIELD_TYPES = [
   'text', 'textarea', 'number', 'email', 'phone', 'date',
-  'select', 'radio', 'checkbox', 'section', 'paragraph', 'signature',
+  'select', 'radio', 'checkbox', 'template', 'section', 'paragraph', 'signature',
 ] as const;
 export type FieldType = (typeof FIELD_TYPES)[number];
 
 export interface Option { value: string; label: string }
+
+export interface TemplateVariant {
+  id: string;
+  label: string;
+  text: string;
+}
 
 export interface Field {
   id: string;
@@ -14,6 +20,8 @@ export interface Field {
   placeholder?: string;
   width?: 'full' | 'half';
   options?: Option[];
+  templates?: TemplateVariant[];
+  defaultTemplateId?: string;
   validation?: { minLength?: number; maxLength?: number; min?: number; max?: number };
 }
 
@@ -33,6 +41,7 @@ export const FIELD_GROUPS: FieldGroup[] = ['نصوص', 'اختيارات', 'تخ
 export const FIELD_META: Record<FieldType, { label: string; input: boolean; group: FieldGroup }> = {
   text: { label: 'نص قصير', input: true, group: 'نصوص' },
   textarea: { label: 'نص طويل', input: true, group: 'نصوص' },
+  template: { label: 'نص بقالب', input: true, group: 'نصوص' },
   number: { label: 'رقم', input: true, group: 'نصوص' },
   email: { label: 'بريد إلكتروني', input: true, group: 'نصوص' },
   phone: { label: 'هاتف', input: true, group: 'نصوص' },
@@ -61,5 +70,12 @@ export function createField(type: FieldType): Field {
   if (type === 'select' || type === 'radio' || type === 'checkbox')
     f.options = [{ value: 'opt1', label: 'خيار 1' }, { value: 'opt2', label: 'خيار 2' }];
   if (type === 'paragraph') f.label = 'اكتب هنا نصاً توضيحياً للنموذج.';
+  if (type === 'template') {
+    f.templates = [
+      { id: 'tpl_1', label: 'مرحبا', text: 'مرحبا {{الاسم}}، نود إبلاغكم بأن {{الموضوع}}.' },
+      { id: 'tpl_2', label: 'أهلاً', text: 'أهلاً {{الاسم}}، يسعدنا تواصلك بخصوص {{الموضوع}}.' },
+    ];
+    f.defaultTemplateId = 'tpl_1';
+  }
   return f;
 }
